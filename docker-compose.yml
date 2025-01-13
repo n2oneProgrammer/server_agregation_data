@@ -1,0 +1,10 @@
+services:
+  server:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_IP=something
+      - POSTGRES_PORT=something
+      - POSTGRES_USER=something
+      - POSTGRES_PASSWORD=something
