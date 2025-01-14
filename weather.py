@@ -1,5 +1,4 @@
 from pydantic import BaseModel
-import os
 import requests
 import xmltodict
 import threading
