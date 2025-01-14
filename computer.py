@@ -18,7 +18,7 @@ def computer_data_loop():
     cpu_temperature = psutil.sensors_temperatures()['cpu_thermal'][0].current
 
     postgres.push_command(
-        "INSERT INTO computer_params.system_params(cpu_usage, cpu_freq, memory_usage, memory_swap_usage, cpu_temperature) VALUES (%s,%s,%s,%s)",
+        "INSERT INTO computer_params.system_params(cpu_usage, cpu_freq, memory_usage, memory_swap_usage, cpu_temperature) VALUES (%s,%s,%s,%s,%s)",
         (cpu_usage, cpu_freq, memory_usage, memory_swap_usage, cpu_temperature))
 
     threading.Timer(60, computer_data_loop).start()
