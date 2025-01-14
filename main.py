@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from weather import *
+from computer import computer_data_loop
 
+computer_data_loop()
 app = FastAPI()
 
 

@@ -2,7 +2,7 @@ import postgres
 import psutil
 import threading
 
-def add_computer_data():
+def computer_data_loop():
     cpu_times = psutil.cpu_times_percent()
     postgres.push_command(
         "INSERT INTO computer_params.cpu_times(\"user\", nice, system, idle, iowait, irq, softirq, steal, guest, guest_nice) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",
@@ -21,7 +21,5 @@ def add_computer_data():
         "INSERT INTO computer_params.system_params(cpu_usage, cpu_freq, memory_usage, memory_swap_usage, cpu_temperature) VALUES (%s,%s,%s,%s)",
         (cpu_usage, cpu_freq, memory_usage, memory_swap_usage, cpu_temperature))
 
-    threading.Timer(60, add_computer_data).start()
+    threading.Timer(60, computer_data_loop).start()
 
-
-add_computer_data()
